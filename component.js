@@ -17,7 +17,9 @@ class Component extends cutil.mixin(DOM.window.HTMLElement, pubsub, iwdom, iwx) 
       make({ x, node, ...rest }) {
         const Cmp = this;
         cutil.extend(Cmp, rest);
-        new Cmp().create({ x, node });
+        const cmp = new Cmp();
+        cmp.create({ x, node });
+        return cmp;
       },
     });
     cutil.extend(this.prototype, {
