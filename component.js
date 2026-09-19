@@ -8,7 +8,11 @@ class Component extends cutil.mixin(DOM.window.HTMLElement, pubsub, iwdom, iwx) 
   static {
     cutil.extend(this, {
       is(name) {
-        customElements.define(name, this);
+        if (!DOM.window.customElements.get(name)) {
+          DOM.window.customElements.define(name, this);
+        } else {
+          console.warn(`Element '${name}' was already defined.`)
+        }
       }
     });
     cutil.extend(this.prototype, {
