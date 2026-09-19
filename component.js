@@ -32,12 +32,14 @@ class Component extends cutil.mixin(DOM.window.HTMLElement, pubsub, iwdom, iwx) 
 	}
   constructor() {
     super();
-    this.create();
+    const { x } = this;
+    const { root: node } = this;
+    this.create({ x, node });
   }
-  create() {
-    this.promise = this.toCreate();
+  create({ x, node }) {
+    this.promise = this.toCreate({ x, node });
   }
-  async toCreate() {}
+  async toCreate({ x, node }) {}
 }
 
 export { Component };
