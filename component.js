@@ -13,7 +13,11 @@ class Component extends cutil.mixin(DOM.window.HTMLElement, pubsub, iwdom, iwx) 
         } else {
           console.warn(`Element '${name}' was already defined.`)
         }
-      }
+      },
+      make({ x, node }) {
+        const Cmp = this;
+        new Cmp().create({ x, node });
+      },
     });
     cutil.extend(this.prototype, {
       open: true,
