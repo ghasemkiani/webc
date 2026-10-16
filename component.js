@@ -14,6 +14,13 @@ class Component extends cutil.mixin(DOM.window.HTMLElement, pubsub, iwdom, iwx) 
           console.warn(`Element '${name}' was already defined.`)
         }
       },
+      run({ node, ...rest } = {}, f = null) {
+        const Cmp = this;
+        const cmp = new Cmp({ node, ...rest });
+        const { x } = cmp;
+        x.chain(cmp, f);
+        return cmp;
+      },
       make({ node, ...rest } = {}, f = null) {
         const Cmp = this;
         const cmp = new Cmp({ node, ...rest });
